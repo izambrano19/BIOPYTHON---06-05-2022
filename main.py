@@ -23,6 +23,7 @@ with open("practica.txt", "w") as fitxer:
                 j +=1
                 fitxer.write(str("Exo numero " + str(j) + " es:") + "\n")
                 fitxer.write(str("  " + str(i.location) + "\n"))
+        for i in (rec.features):
             if i.type == 'CDS':
                 fitxer.write("\n")
                 fitxer.write(str("El CDS te ") + "\n")
@@ -43,6 +44,7 @@ with open("practica.txt", "w") as fitxer:
                 j +=1
                 fitxer.write(str("Exo numero " + str(j) + " es:") + "\n")
                 fitxer.write(str("  " + str(i.location) + "\n"))
+        for i in (rec.features):
             if i.type == 'CDS':
                 fitxer.write("\n")
                 fitxer.write(str("El CDS te ") + "\n")
