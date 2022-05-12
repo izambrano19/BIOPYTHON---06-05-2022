@@ -27,13 +27,16 @@ with open("practica.txt", "w") as fitxer:
         for i in (rec.features):
             if i.type == 'CDS':
                 fitxer.write("\n")
-                fitxer.write(str("El CDS te: ") + "\n")
+                e = str(i.qualifiers['translation']).strip("[']")
+                fitxer.write(str("El CDS te: ") + str(len(e) * 3) + "\n")
                 fitxer.write(str("  " + str(i.location) + "\n"))
-                e = str(i.qualifiers['translation']).replace("[", "")
-                g = e.replace("]", "")
-                f = e.replace("'", "")
-                fitxer.write(f + "\n")
-                fitxer.write(str(len(f) * 3))
+                fitxer.write(e + "\n")
+                ## e = str(i.qualifiers['translation']).replace("[", "")
+                ## g = e.replace("]", "")
+                ## f = g.replace("'", "")
+                ## fitxer.write(f + "\n")
+                ## fitxer.write(str(len(f) * 3) + "\n")
+                fitxer.write(e + "\n")
 
 
 
