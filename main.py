@@ -6,6 +6,20 @@ from Bio import Seq
 
 Entrez.email = "izambrano19@ilg.cat"  # Always tell NCBI who you are
 
+c1 = []
+c2 = []
+vacio = []
+
+
+def alinea(cadena1, cadena2):
+    valor = 0
+    for i in range(len(cadena1)):
+        if cadena1[i] == cadena2[i]:
+            valor += 1
+        else:
+            valor -= 1
+            return valor
+
 
 with open("practica.txt", "w") as fitxer:
     #  NM_001354619.2     NM_001324522.1
@@ -25,11 +39,23 @@ with open("practica.txt", "w") as fitxer:
 
         for i in (rec.features):
             if i.type == 'CDS':
-                fitxer.write("\n")
-                e = str(i.qualifiers['translation']).strip("[']")
-                fitxer.write(str("El CDS te: ") + str(len(e) * 3) + "\n")
-                fitxer.write(str(i.location) + "\n")
-                dna = reverse_translate(str(e))
-                fitxer.write(dna + "\n")
-                e = e[0:50]
-                fitxer.write(e + "\n")
+                if c1 == vacio:
+                    fitxer.write("\n")
+                    c1 = str(i.qualifiers['translation']).strip("[']")
+                    fitxer.write(str("El CDS te: ") + str(len(c1) * 3) + "\n")
+                    fitxer.write(str(i.location) + "\n")
+                    dna = reverse_translate(str(c1))
+                    fitxer.write(dna + "\n")
+                    c1 = c1[0:50]
+                    fitxer.write(c1 + "\n")
+
+                else:
+                    fitxer.write("\n")
+                    c2 = str(i.qualifiers['translation']).strip("[']")
+                    fitxer.write(str("El CDS te: ") + str(len(c2) * 3) + "\n")
+                    fitxer.write(str(i.location) + "\n")
+                    dna = reverse_translate(str(c2))
+                    fitxer.write(dna + "\n")
+                    c2 = c2[0:50]
+                    fitxer.write(c2 + "\n")
+print(alinea(c1, c2))
